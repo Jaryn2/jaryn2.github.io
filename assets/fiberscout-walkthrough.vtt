@@ -1,0 +1,37 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:07.000
+Open a saved scenario. Its name, notes, tracts,
+and assumptions return from PostgreSQL.
+
+00:00:07.000 --> 00:00:14.000
+Change assumed adoption from 30% to 35%.
+The calculator updates immediately. These are fictional inputs.
+
+00:00:14.000 --> 00:00:21.000
+Save creates revision 2.
+The original revision remains available.
+
+00:00:21.000 --> 00:00:28.000
+Select revision 1 for export.
+Later edits do not change this saved snapshot.
+
+00:00:28.000 --> 00:00:35.000
+The conflict review shows this tab's 45% draft
+beside the latest saved value of 36%. Nothing is overwritten.
+
+00:00:35.000 --> 00:00:42.000
+Duplicate the retained draft and name a new scenario
+for the retry demonstration.
+
+00:00:42.000 --> 00:00:49.000
+The service is stopped. The save fails with a useful message.
+The draft and retry key stay on the page.
+
+00:00:49.000 --> 00:00:56.000
+Restart the service and retry the same request.
+It saves once as revision 1, with the original draft intact.
+
+00:00:56.000 --> 00:01:03.000
+Refresh the page and reopen the saved scenario.
+The account, notes, tract selection, and assumptions survive.

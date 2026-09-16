@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="How FiberScout combines Census and FCC data, maps, a scenario calculator, and a C# API with saved revisions. Includes a walkthrough and verification results.">
+  <meta name="theme-color" content="#142d50">
+  <title>FiberScout | Jaryn</title>
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="wordmark" href="../../" aria-label="Jaryn, home">Jaryn<span aria-hidden="true">.</span></a>
+      <nav aria-label="Main navigation">
+        <a href="../../#projects">Projects</a>
+        <a href="https://github.com/Jaryn2">GitHub</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <a class="breadcrumb" href="../../#projects">Back to projects</a>
+      <div class="project-intro">
+        <p class="eyebrow">Public data · Web application · September 2026</p>
+        <h1>FiberScout</h1>
+        <p class="intro-copy">Compare housing and broadband data, test fiber expansion assumptions, and keep the sources behind each result.</p>
+        <div class="actions">
+          <a class="button" href="https://fiberscout-ventura.jaryn04.chatgpt.site">Open the research demo</a>
+          <a class="text-link" href="#walkthrough">Watch the saved-scenario walkthrough</a>
+        </div>
+      </div>
+
+      <dl class="facts" aria-label="Project facts">
+        <div><dt>Research scope</dt><dd>190 census tracts</dd></div>
+        <div><dt>Automated checks</dt><dd>97 tests passed</dd></div>
+        <div><dt>Public release</dt><dd>Research demo</dd></div>
+      </dl>
+
+      <div class="project-layout">
+        <aside class="project-nav" aria-label="Project contents">
+          <p>Inside the project</p>
+          <nav aria-label="On this page">
+            <a href="#overview">The problem</a>
+            <a href="#walkthrough">Walkthrough</a>
+            <a href="#stack">How it works</a>
+            <a href="#decisions">Design decisions</a>
+            <a href="#checks">Testing</a>
+            <a href="#scope">Scope and next steps</a>
+          </nav>
+        </aside>
+
+        <div class="project-body">
+          <section id="overview" aria-labelledby="overview-title">
+            <h2 id="overview-title">Research with a trail back to the source.</h2>
+            <p>Housing estimates, internet subscriptions, and reported fiber availability describe different things. Comparing them takes more than putting the numbers in the same table.</p>
+            <p>FiberScout brings Census estimates, FCC reports, and planning findings into one workspace for Ventura County, California. Each measure keeps its source and reporting period. Missing values remain visible, and observed data stays separate from the assumptions entered into the calculator.</p>
+            <p>A user can compare tracts, map the data, change seven hypothetical build assumptions, and export a PDF or CSV report. The account application also saves scenarios and their revision history.</p>
+            <figure>
+              <img src="../../assets/ventura-boundaries.png" width="2100" height="1350" loading="lazy" alt="Ventura County census tract boundaries, with Tract 3.02 and the water-only Tract 9901 highlighted at different scales.">
+              <figcaption>190 Census boundaries matched to the research records. Water areas and differences between households and service locations matter when interpreting the data.</figcaption>
+            </figure>
+          </section>
+
+          <section id="walkthrough" aria-labelledby="walkthrough-title">
+            <h2 id="walkthrough-title">Saving, revising, and trying again.</h2>
+            <p>The full account application adds saved scenarios, comparison, and exports from a selected revision. This walkthrough shows the application running locally with fictional inputs.</p>
+            <!-- Keep the video optional so a phone does not download it on page load. -->
+            <figure class="media-frame">
+              <video controls playsinline preload="none" poster="../../assets/fiberscout-scenario.png" aria-label="FiberScout saved-scenario walkthrough">
+                <source src="../../assets/fiberscout-walkthrough.mp4" type="video/mp4">
+                <track kind="captions" src="../../assets/fiberscout-walkthrough.vtt" srclang="en" label="English" default>
+                <p><a href="../../assets/fiberscout-walkthrough.mp4">Download the walkthrough video</a>.</p>
+              </video>
+              <figcaption>63 seconds. A captioned sequence of actual interface captures, including a conflicting edit and a failed save.</figcaption>
+            </figure>
+            <details>
+              <summary>Read the walkthrough transcript</summary>
+              <ol>
+                <li>Open a saved scenario. Its name, notes, tracts, and assumptions return from PostgreSQL.</li>
+                <li>Change assumed adoption from 30% to 35%. The calculator updates immediately.</li>
+                <li>Save revision 2. The original revision remains available.</li>
+                <li>Select revision 1 for export. Later edits do not change that saved snapshot.</li>
+                <li>Review a conflict between this tab’s 45% draft and the latest saved value of 36%. Neither is silently overwritten.</li>
+                <li>Duplicate the retained draft and name a new scenario.</li>
+                <li>Stop the service and try a save. The page keeps the draft and offers a retry.</li>
+                <li>Restart the service and retry. One scenario is saved.</li>
+                <li>Refresh and reopen it. The saved values are still there.</li>
+              </ol>
+            </details>
+            <div class="notice">
+              <p><strong>What you can try online:</strong> the public demo includes the research views, calculator, and reports. Accounts and saved scenarios run in the local application. The account backend has not been deployed to public hosting.</p>
+            </div>
+          </section>
+
+          <section id="stack" aria-labelledby="stack-title">
+            <h2 id="stack-title">From public data to a saved scenario.</h2>
+            <dl class="stack-list">
+              <div><dt>Python</dt><dd>Collects, cleans, checks, and imports the research data. Repeated FCC reports are handled separately from distinct service locations.</dd></div>
+              <div><dt>SQL &amp; PostgreSQL</dt><dd>Store research records, accounts, scenarios, and revisions. PostGIS supports geographic queries in the research application.</dd></div>
+              <div><dt>React &amp; TypeScript</dt><dd>Provide maps, comparison views, forms, and immediate calculation previews.</dd></div>
+              <div><dt>Next.js</dt><dd>Organizes the web application, handles local research routes, and builds the static frontend.</dd></div>
+              <div><dt>C# &amp; ASP.NET Core</dt><dd>Handle sign-in, ownership checks, input validation, server calculations, and saved-scenario requests.</dd></div>
+              <div><dt>Docker &amp; GitHub Actions</dt><dd>Package the local application and run the Python, web, and C# checks. Azure deployment templates are prepared.</dd></div>
+            </dl>
+            <h3>What happens when someone clicks Save?</h3>
+            <ol class="steps">
+              <li><span>The browser sends the scenario’s inputs and source versions to the API.</span></li>
+              <li><span>The API checks the signed-in account, validates the inputs, and calculates the results again.</span></li>
+              <li><span>PostgreSQL saves the scenario and its revision in one transaction. Both changes succeed together or neither is kept.</span></li>
+              <li><span>The browser shows the saved revision after the server confirms it.</span></li>
+            </ol>
+          </section>
+
+          <section id="decisions" aria-labelledby="decisions-title">
+            <h2 id="decisions-title">Three details behind a reliable save.</h2>
+            <h3>A retry should not create a second scenario.</h3>
+            <p>Each create request includes a retry key. If the same user sends the same request again, the API returns the original result. The key and scenario are stored together so a failed write cannot leave a partial save.</p>
+            <h3>Two tabs should not erase each other’s work.</h3>
+            <p>An edit includes the version the user started with. If another tab has saved a newer version, the API returns a conflict. The interface keeps the draft and lets the user review the difference.</p>
+            <h3>An old report should still mean the same thing.</h3>
+            <p>Each revision keeps its assumptions, calculated results, model version, and source versions. Exporting revision 1 uses that saved record even after revision 3 exists.</p>
+          </section>
+
+          <section id="checks" aria-labelledby="checks-title">
+            <h2 id="checks-title">Checked on GitHub and in the application.</h2>
+            <p>On September 15, 2026, all three GitHub Actions jobs passed, along with the production web build.</p>
+            <ul class="test-list" aria-label="Passing tests by application layer">
+              <li><strong>42</strong> Python tests</li>
+              <li><strong>35</strong> Web tests</li>
+              <li><strong>20</strong> C# tests</li>
+            </ul>
+            <p>The checks cover data handling, calculation edge cases, account isolation, repeated creates, conflicting updates, and database rollback. The C# integration tests run against a temporary PostgreSQL database.</p>
+            <p>Recorded local checks also covered reopening a save after restart, backup and restore, a failed save with a retained draft, and exporting an earlier revision. These are development checks; no outside user study has been completed.</p>
+            <p><a href="../../assets/fiberscout-verification.json">Read the verification summary</a></p>
+          </section>
+
+          <section id="scope" aria-labelledby="scope-title">
+            <h2 id="scope-title">Scope and next steps.</h2>
+            <p>FiberScout supports research. Its scenario results use hypothetical costs and adoption assumptions, not a forecast of demand or a recommendation to build.</p>
+            <p>The data combines Census estimates for 2020–2024 with FCC availability dated December 31, 2025, revised September 3, 2026. It does not calculate a fiber coverage percentage from incompatible counts. Independent review of planning findings and complete FCC location geometry verification remain open.</p>
+            <p>The next steps are to collect feedback from someone trying the workflow and, if useful, deploy the account service. The source repository is currently private.</p>
+            <details>
+              <summary>Development process</summary>
+              <p>This project was developed with Codex assistance for implementation, tests, and documentation. The project records include verification results, corrected issues, and remaining limitations. The walkthrough shows the implemented behavior.</p>
+            </details>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <a href="../../#projects">Back to projects</a>
+      <a href="https://github.com/Jaryn2">GitHub profile</a>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+{
+  "project": "FiberScout",
+  "verifiedDate": "2026-09-15",
+  "sourceCommit": "b99a78b4d75aba49e1f05e4af55504f36c34bfab",
+  "githubActions": {
+    "runId": 35037127670,
+    "url": "https://github.com/Jaryn2/FiberScout/actions/runs/35037127670",
+    "access": "The source repository and full run logs are private.",
+    "status": "completed",
+    "conclusion": "success",
+    "completedAt": "2026-09-15T23:47:18Z",
+    "pythonTestsPassed": 42,
+    "webTestsPassed": 35,
+    "dotnetTestsPassed": 20,
+    "totalTestsPassed": 97,
+    "webProductionBuild": "passed",
+    "integrationDatabase": "Temporary PostgreSQL database on the GitHub runner"
+  },
+  "researchScope": {
+    "county": "Ventura County, California",
+    "censusTracts": 190,
+    "censusEstimatePeriod": "2020-2024",
+    "fccAvailabilityDate": "2025-12-31",
+    "fccRevisionDate": "2026-09-03"
+  },
+  "deployment": {
+    "publicResearchDemo": "https://fiberscout-ventura.jaryn04.chatgpt.site",
+    "accountBackend": "Implemented and tested locally; not deployed to public hosting",
+    "azureConfiguration": "Prepared; no Azure deployment performed"
+  },
+  "walkthrough": {
+    "durationSeconds": 63,
+    "format": "Captioned sequence of actual local browser captures",
+    "scenarioInputs": "Fictional",
+    "isTimedUserStudy": false
+  },
+  "outsideParticipants": 0
+}

@@ -1,0 +1,7 @@
+# Keep local settings and temporary files out of the website.
+.env
+.env.*
+.DS_Store
+Thumbs.db
+*.log
+.local/
