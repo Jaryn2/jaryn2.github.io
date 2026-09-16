@@ -1,13 +1,14 @@
-# Jaryn's portfolio
+# Jaryn Weinel's portfolio
 
 A small static portfolio for GitHub Pages. The home page introduces the projects. Each project can have a separate page with its purpose, implementation, screenshots, and results.
 
 ## Files
 
-- `index.html`: home page and project list.
+- `index.html`: introduction, project list, education, work history, and contact details.
 - `projects/fiberscout/index.html`: FiberScout project page.
 - `assets/site.css`: shared layout, colors, and mobile styles.
 - `assets/`: selected project media and a verification summary.
+- `assets/Jaryn-Weinel-Resume.pdf`: downloadable resume.
 - `.nojekyll`: tells GitHub Pages to serve these files directly.
 
 There are no packages to install and no database. The pages work without JavaScript.
@@ -26,11 +27,11 @@ From this directory, run `python -m http.server 4175 --bind 127.0.0.1` and open 
 
 ## Resume information
 
-The first draft uses only the known first name and verified project details. Education, experience, contact details, and a downloadable resume will be added from the owner's supplied information. There are no invented entries or empty resume links.
+Education, employment dates and duties, track and cross country participation, and contact information were supplied by Jaryn on September 16, 2026. The project bullets use the verified FiberScout implementation and test results. The skills list describes tools used in the project rather than claiming an unsupported level of proficiency. Update the website and PDF together when details change.
 
 ## GitHub Pages
 
-The intended repository is `Jaryn2/jaryn2.github.io`, with the default address https://jaryn2.github.io. The site files are at the repository root. Publish from the selected branch's root directory in the repository's Pages settings.
+The public repository is `Jaryn2/jaryn2.github.io`, at https://jaryn2.github.io. GitHub Pages publishes the root directory of the `codex/portfolio` branch. Pushing to that branch starts a new deployment.
 
 The FiberScout application is a separate project. This portfolio links to its existing public research demo and includes a local saved-scenario walkthrough. It does not run the account API.
 

@@ -31,7 +31,7 @@ h1 { font-size: clamp(3.25rem, 8vw, 6.75rem); }
 h2 { font-size: clamp(1.8rem, 4vw, 2.7rem); }
 h3 { font-size: 1.35rem; }
 .page-shell { max-width: 1260px; margin: auto; padding: 0 clamp(1.25rem, 5vw, 4rem); }
-.site-header { display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; padding: 1.6rem 0; border-bottom: 1px solid var(--line); }
+.site-header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.5rem; padding: 1.6rem 0; border-bottom: 1px solid var(--line); }
 .wordmark { font-size: 1.6rem; font-weight: 750; color: var(--ink); text-decoration: none; letter-spacing: -.055em; }
 .wordmark span { color: var(--accent); }
 nav { display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem; }
@@ -61,6 +61,27 @@ figcaption { padding-top: .75rem; }
 .site-footer p { margin: 0; }
 .skip-link { position: absolute; top: -100px; left: 1rem; padding: .6rem 1rem; background: white; z-index: 10; }
 .skip-link:focus { top: 1rem; }
+
+/* Keep resume entries easy to scan without squeezing the dates. */
+.resume-section { margin-top: 4rem; }
+.resume-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; padding: 1.5rem 0; }
+.resume-group { margin-bottom: 2rem; }
+.resume-group h3, .project-tools h3 { font-size: 1.125rem; letter-spacing: -.01em; }
+.resume-entry { margin-top: 1.5rem; }
+.resume-entry h4 { font-size: 1.125rem; line-height: 1.4; margin: 0 0 .4rem; font-weight: 650; }
+.resume-entry p { margin: .25rem 0; }
+.entry-date { font-size: .9375rem; color: var(--muted); }
+.resume-entry ul { padding-left: 1.2rem; margin-top: .75rem; }
+.resume-entry li { margin-bottom: .5rem; }
+.project-tools { padding: 1.75rem 0; border-top: 1px solid var(--line); }
+.project-tools dl { margin: 1rem 0 0; }
+.project-tools dl > div { display: grid; grid-template-columns: 170px 1fr; gap: 1rem; margin-bottom: .6rem; }
+.project-tools dt { font-weight: 600; }
+.project-tools dd { margin: 0; color: var(--muted); }
+.contact-section { display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--line); }
+.contact-section h2 { font-size: 1.4rem; }
+.contact-email { font-size: clamp(1.35rem, 3vw, 2rem); font-weight: 600; overflow-wrap: anywhere; }
+.contact-section p { margin: .65rem 0 1rem; color: var(--muted); }
 
 /* Project pages use a narrow reading column beside a short contents list. */
 .breadcrumb { display: inline-block; margin-top: 2rem; font-size: .9375rem; }
@@ -111,7 +132,7 @@ details[open] summary { margin-bottom: 1rem; }
   .project-nav nav { flex-direction: row; flex-wrap: wrap; gap: .75rem 1.25rem; }
 }
 @media (max-width: 540px) {
-  .site-header { align-items: flex-start; }
+  .site-header { align-items: flex-start; flex-direction: column; gap: 1rem; }
   nav { gap: .7rem 1rem; }
   .intro { padding-bottom: 3rem; }
   .section-heading { flex-wrap: wrap; }
@@ -122,6 +143,9 @@ details[open] summary { margin-bottom: 1rem; }
   .stack-list > div { grid-template-columns: 1fr; gap: .3rem; }
   .test-list { grid-template-columns: 1fr; }
   .test-list li { display: flex; align-items: baseline; gap: 1rem; margin: 0; }
+  .resume-grid { grid-template-columns: 1fr; gap: 0; }
+  .project-tools dl > div { grid-template-columns: 1fr; gap: .15rem; margin-bottom: 1rem; }
+  .contact-section { grid-template-columns: 1fr; gap: 1rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
