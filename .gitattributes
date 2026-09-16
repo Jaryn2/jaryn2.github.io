@@ -1,0 +1,7 @@
+# Keep source files consistent across Windows and Linux.
+* text=auto eol=lf
+
+# Preserve the exact bytes of downloadable and media files.
+*.pdf -text
+*.png -text
+*.mp4 -text
