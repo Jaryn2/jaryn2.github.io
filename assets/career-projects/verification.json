@@ -1,0 +1,22 @@
+{
+  "recorded_date": "2026-09-24",
+  "projects": {
+    "stockroom": {
+      "tests": 14,
+      "result": "passed",
+      "run": "https://github.com/Jaryn2/stockroom/actions/runs/36030715926"
+    },
+    "import-desk": {
+      "tests": 21,
+      "result": "passed",
+      "run": "https://github.com/Jaryn2/import-desk/actions/runs/36030727399"
+    },
+    "source-notes": {
+      "tests": 22,
+      "result": "passed",
+      "run": "https://github.com/Jaryn2/source-notes/actions/runs/36030739505"
+    }
+  },
+  "hosting": "Public walkthroughs only; app backends run locally.",
+  "live_llm": "Not tested; provider checks use HTTP mocks."
+}

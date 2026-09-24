@@ -2,6 +2,6 @@
 * text=auto eol=lf
 
 # Preserve the exact bytes of downloadable and media files.
-*.pdf -text
-*.png -text
-*.mp4 -text
+*.pdf binary
+*.png binary
+*.mp4 binary

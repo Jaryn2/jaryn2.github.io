@@ -40,3 +40,7 @@ The FiberScout application is a separate project. This portfolio links to its ex
 The screenshots and walkthrough come from the FiberScout verification artifacts and use fictional scenario inputs. The map includes its U.S. Census source attribution. The video is a paced sequence of interface captures, not a continuous recording or a timed user study.
 
 Automated results are recorded in `assets/fiberscout-verification.json`. Do not change the counts or deployment status unless new evidence supports the change.
+
+## September 24 project update
+
+Stockroom, Import Desk, and Source Notes each have a project page with real local screenshots, a stack explanation, a code guide, and a passing GitHub Actions run. These pages are static walkthroughs. Their Java/Python backends are not hosted on GitHub Pages. The main resume download is the software engineering version featuring Stockroom and FiberScout. The new code lives in separate public repositories linked on each page.

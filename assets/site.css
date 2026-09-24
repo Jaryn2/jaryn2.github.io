@@ -150,3 +150,18 @@ details[open] summary { margin-bottom: 1rem; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
+
+/* Smaller cards keep the new projects beside the main research project. */
+.project-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; margin-top: 1.5rem; }
+.project-card { border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+.project-card > div { padding: 1.5rem; }
+.project-card img { aspect-ratio: 4/3; object-fit: cover; object-position: top; border-bottom: 1px solid var(--line); }
+.project-card .eyebrow { font-size: .75rem; margin-bottom: .75rem; }
+.project-card h3 { margin-bottom: 1rem; font-size: 1.65rem; }
+.project-card h3 a { color: var(--ink); text-decoration: none; }
+.project-card .actions { margin-bottom: 0; }
+.walkthrough-step { margin: 2rem 0 3rem; }
+.walkthrough-image { max-height: 650px; object-fit: contain; object-position: top; background: var(--wash); border: 1px solid var(--line); }
+.guide-link { margin-top: 1.5rem; }
+@media (max-width: 1000px) { .project-cards { grid-template-columns: 1fr; } .project-card { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); } }
+@media (max-width: 600px) { .project-card { display: block; } }
