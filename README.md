@@ -44,3 +44,9 @@ Automated results are recorded in `assets/fiberscout-verification.json`. Do not 
 ## September 24 project update
 
 Stockroom, Import Desk, and Source Notes each have a project page with real local screenshots, a stack explanation, a code guide, and a passing GitHub Actions run. These pages are static walkthroughs. Their Java/Python backends are not hosted on GitHub Pages. The main resume download is the software engineering version featuring Stockroom and FiberScout. The new code lives in separate public repositories linked on each page.
+
+## Password-free demos
+
+Stockroom, Import Desk, and Source Notes now have interactive demos in each project's `demo/` folder. They open without an account, use sample data in browser storage, and include a reset button. These builds do not connect to the Java/Python servers or a shared database. Their full backends still run locally. The regular portfolio pages work without JavaScript; the interactive demos need JavaScript.
+
+The source and build command are in the private combined project under `projects/scripts/build_public_demos.py`. Rebuild there, then review and publish this repository. Do not rerun the old one-time portfolio export.
